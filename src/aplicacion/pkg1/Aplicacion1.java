@@ -24,6 +24,10 @@ public class Aplicacion1 {
         lista.leerArchivo("C:\\archivo\\numeros.txt");
         lista.listar();
         System.out.print("\n");
+        lista.listar2();
+        System.out.println("\n");
+        lista.mostrarMedia();
+        
         
     }
     

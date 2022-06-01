@@ -40,7 +40,7 @@ public class Lista {
     public boolean Vacia() {
         return inicio == null;
     }
-    
+
     public boolean Vacia2() {
         return inicio2 == null;
     }
@@ -55,7 +55,10 @@ public class Lista {
             Nodo temporal = inicio;
             while (temporal.getSiguiente() != null) {
                 temporal = temporal.getSiguiente();
+
             }
+//            nodo.setColumna(col);
+
             temporal.setSiguiente(nodo);
         }
         cantidad++;
@@ -74,36 +77,39 @@ public class Lista {
             }
             temporal.setSiguiente(nodo2);
         }
-        cantidad++;
     }
 
     public void listar() {
         if (!Vacia()) {
-            Nodo temp = inicio;
+            Nodo tem = inicio;
             int i = 0;
             System.out.println("Columna 1");
-            while (temp != null) {
-                System.out.print(temp.getColumna()+" | ");
-                temp = temp.getSiguiente();
+            while (tem != null) {
+                System.out.print(tem.getColumna() + " | ");
+                tem = tem.getSiguiente();
                 i++;
+
             }
         }
     }
 
     public void listar2() {
         if (!Vacia2()) {
-            Nodo tempo = inicio2;
+            Nodo tem = inicio2;
 
             int i = 0;
             System.out.println("Columna 2");
-            while (tempo != null) {
-                System.out.print(tempo.getColumna2()+" | ");
-                tempo = tempo.getSiguiente();
+            while (tem != null) {
+                System.out.print(tem.getColumna2() + " | ");
+                tem = tem.getSiguiente();
 
                 i++;
             }
         }
     }
+    
+    
+    
 
     //////////////
     private BufferedReader lector;
@@ -117,18 +123,42 @@ public class Lista {
                 partes = linea.split(";");
 
                 columna = (Double.parseDouble(partes[0]));
-                agregarCol2(columna);
+                agregarCol1(columna);
 
                 columna2 = (Double.parseDouble(partes[1]));
                 agregarCol2(columna2);
             }
-            lector.close();
-            linea = null;
-            partes = null;
         } catch (Exception e) {
             //JOptionPane.showMessageDialog(null, e);
             System.out.println("No se encontro el archivo");
         }
+    }
+    
+    public void mostrarMedia(){
+        
+        double suma = 0;
+        double suma2 = 0;
+        double average = 0;
+        double average2 = 0;
+        double numero = 0;
+        double numero2 = 0;
+        
+        for (double i = 0; i< partes.length; i++){
+            numero += Double.parseDouble(partes[0]);
+            numero2 = Double.parseDouble(partes[1]);
+            System.out.println(numero);
+            suma += numero;
+            suma2 = suma2 + numero2;
+        }
+        
+        System.out.println(suma);
+        
+        average = numero / getCantidad();
+//        average = suma2 / getCantidad(); 
+        System.out.println("El promedio es "+average);
+        System.out.println("El promedio es "+average2);
+
+        
     }
 
 }

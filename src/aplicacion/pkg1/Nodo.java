@@ -9,18 +9,21 @@ package aplicacion.pkg1;
  *
  * @author SAMSUNG-PC
  */
-public class Nodo{
-    
+public class Nodo {
+
     private double columna2;
     private double columna;
     public Nodo siguiente;
+   
+
     
-    public Nodo(double columna, double columna2){
+
+    public Nodo(double columna, double columna2) {
         this.columna = columna;
         this.columna2 = columna2;
     }
-    
-    public Nodo(){
+
+    public Nodo() {
     }
 
     public double getColumna() {
@@ -38,7 +41,7 @@ public class Nodo{
     public void setColumna2(double columna2) {
         this.columna2 = columna2;
     }
-    
+
     public Nodo getSiguiente() {
         return siguiente;
     }
@@ -46,13 +49,5 @@ public class Nodo{
     public void setSiguiente(Nodo siguiente) {
         this.siguiente = siguiente;
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
 }
