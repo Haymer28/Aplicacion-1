@@ -18,8 +18,17 @@ public class Lista {
     private Nodo inicio;
     private Nodo inicio2;
     private int cantidad;
+    private int cantidad2;
     private double columna;
     private double columna2;
+
+    public int getCantidad2() {
+        return cantidad2;
+    }
+
+    public void setCantidad2(int cantidad2) {
+        this.cantidad2 = cantidad2;
+    }
 
     public int getCantidad() {
         return cantidad;
@@ -62,6 +71,7 @@ public class Lista {
             temporal.setSiguiente(nodo);
         }
         cantidad++;
+        setCantidad(cantidad);
     }
 
     public void agregarCol2(double col2) {
@@ -77,6 +87,8 @@ public class Lista {
             }
             temporal.setSiguiente(nodo2);
         }
+        cantidad2++;
+        setCantidad2(cantidad2);
     }
 
     public void listar() {
@@ -150,8 +162,24 @@ public class Lista {
             suma += numero;
             suma2 = suma2 + numero2;
         }
+        /*if (!Vacia2()) {
+            Nodo tem = inicio;
+            
+            int i = 0;
+            System.out.println("Columna 1");
+            while (tem != null) {
+                suma = suma + tem.getColumna();
+                
+                tem = tem.getSiguiente();
+
+                i++;
+            }
+            suma /= getCantidad();
+            System.out.println(suma);
+            //
+        }
         
-        System.out.println(suma);
+        System.out.println(suma);*/
         
         average = numero / getCantidad();
 //        average = suma2 / getCantidad(); 
