@@ -20,15 +20,38 @@ public class Aplicacion1 {
         
         Lista lista = new Lista();
         
+        int opcion = 0;
         
         lista.leerArchivo("C:\\archivo\\numeros.txt");
-        lista.listar();
-        System.out.print("\n");
-        lista.listar2();
-        System.out.println("\n");
-        lista.mostrarMedia();
         
-        
+        try{
+            opcion = Integer.parseInt(JOptionPane.showInputDialog(null,
+                    "1.Mostrar columna 1, media y varianza\n 2.Mostrar columna 2, media y varianza\n"));
+            switch(opcion){
+                case 1:
+                    lista.listar();
+                    System.out.println("");
+                    System.out.println("Media: ");
+                    lista.mostrarMedia();
+                    System.out.println("Varianza:");
+                    lista.mostrarVarianza();
+                    break;
+                case 2:
+                    lista.listar2();
+                    System.out.println("");
+                    System.out.println("Media:");
+                    lista.mostrarMedia2();
+                    System.out.println("Varianza:");
+                    lista.mostrarVarianza2();
+                    break;
+                default:
+                    
+                    break;
+            }
+        }
+        catch(Exception e){
+            
+        }
     }
     
 }

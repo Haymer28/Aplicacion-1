@@ -7,6 +7,7 @@ package aplicacion.pkg1;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,7 +22,24 @@ public class Lista {
     private int cantidad2;
     private double columna;
     private double columna2;
+    private double var;
+    private double var2;
 
+    public double getVar() {
+        return var;
+    }
+
+    public void setVar(double var) {
+        this.var = var;
+    }
+
+    public double getVar2() {
+        return var2;
+    }
+
+    public void setVar2(double var2) {
+        this.var2 = var2;
+    }
     public int getCantidad2() {
         return cantidad2;
     }
@@ -57,7 +75,6 @@ public class Lista {
     public void agregarCol1(double col) {
         Nodo nodo = new Nodo();
         nodo.setColumna(col);
-        //System.out.println(nodo.getColumna());
         if (Vacia()) {
             inicio = nodo;
         } else {
@@ -66,8 +83,6 @@ public class Lista {
                 temporal = temporal.getSiguiente();
 
             }
-//            nodo.setColumna(col);
-
             temporal.setSiguiente(nodo);
         }
         cantidad++;
@@ -100,7 +115,6 @@ public class Lista {
                 System.out.print(tem.getColumna() + " | ");
                 tem = tem.getSiguiente();
                 i++;
-
             }
         }
     }
@@ -119,11 +133,7 @@ public class Lista {
             }
         }
     }
-    
-    
-    
-
-    //////////////
+ 
     private BufferedReader lector;
     private String linea;
     private String partes[] = null;
@@ -146,47 +156,83 @@ public class Lista {
         }
     }
     
+    double suma = 0;
+    double suma2 = 0;
+        
     public void mostrarMedia(){
         
-        double suma = 0;
-        double suma2 = 0;
-        double average = 0;
-        double average2 = 0;
-        double numero = 0;
-        double numero2 = 0;
         
-        for (double i = 0; i< partes.length; i++){
-            numero += Double.parseDouble(partes[0]);
-            numero2 = Double.parseDouble(partes[1]);
-            System.out.println(numero);
-            suma += numero;
-            suma2 = suma2 + numero2;
-        }
-        /*if (!Vacia2()) {
+        if (!Vacia()) {
             Nodo tem = inicio;
-            
             int i = 0;
-            System.out.println("Columna 1");
             while (tem != null) {
                 suma = suma + tem.getColumna();
-                
                 tem = tem.getSiguiente();
-
                 i++;
             }
             suma /= getCantidad();
             System.out.println(suma);
-            //
         }
-        
-        System.out.println(suma);*/
-        
-        average = numero / getCantidad();
-//        average = suma2 / getCantidad(); 
-        System.out.println("El promedio es "+average);
-        System.out.println("El promedio es "+average2);
-
-        
+      
     }
+    
+    public void mostrarMedia2(){
+        
+        if (!Vacia2()) {
+            Nodo tem = inicio2;
+            int i = 0;
+            while (tem != null) {
+                suma2 = suma2 + tem.getColumna2();
+                tem = tem.getSiguiente();
+                i++;
+            } 
+            DecimalFormat form = new DecimalFormat("#.##");
+            suma2 /= getCantidad2();
+            System.out.println(form.format(suma2));
+        }
+    }
+    
+    
+    public void mostrarVarianza(){
+        double cifra = 0;
+        
+        if (!Vacia()){
+            Nodo tem = inicio;
+            int i = 0;
+            while (tem != null){
+                cifra = cifra + (Math.pow((tem.getColumna() - suma), 2));
+                tem = tem.getSiguiente();
+                i++;
+            }
+        }
+        int totalVar = getCantidad() -1;
+        double ult = cifra / totalVar;
+        DecimalFormat formato = new DecimalFormat("#.##");
+        var = Math.sqrt(ult);
+        setVar(var);
+        System.out.println(formato.format(getVar()));
+    }
+    
+    public void mostrarVarianza2(){
+        double cifra = 0;
+        
+        if (!Vacia()){
+            Nodo tem = inicio2;
+            int i = 0;
+            while (tem != null){
+                cifra = cifra + (Math.pow((tem.getColumna2() - suma2), 2));
+                tem = tem.getSiguiente();
+                i++;
+            }
+        }
+        int totalVar = getCantidad2()-1;
+        double ult = cifra / totalVar;
+        DecimalFormat formato2 = new DecimalFormat("#.##");
+        var2 = Math.sqrt(ult);
+        setVar2(var2);
+        System.out.println(formato2.format(getVar2()));
+    }
+    
+   
 
 }
