@@ -10,14 +10,13 @@ package aplicacion.pkg1;
  * @author SAMSUNG-PC
  */
 public class Nodo {
-
+    
+    //Con estos atributos se trabaja en la clase Lista
     private double columna2;
     private double columna;
     public Nodo siguiente;
    
-
-    
-
+    //Este constructor es para hacer instancias en otras clases
     public Nodo(double columna, double columna2) {
         this.columna = columna;
         this.columna2 = columna2;
@@ -25,7 +24,9 @@ public class Nodo {
 
     public Nodo() {
     }
-
+    
+    //Metodos get y set necesarios para poder manipular 
+    //los atributos que esten encapsulados como privados
     public double getColumna() {
         return columna;
     }
